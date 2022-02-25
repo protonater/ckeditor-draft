@@ -3249,7 +3249,7 @@
 
                 $(".loading-animation").hide();
 
-                var SYMBOLAB = new Symbolab("fe", htmlDecode("x^{2}-x-6=9"), 'en');
+                var SYMBOLAB = new Symbolab("fe", htmlDecode(""), 'en');
                 var SYPAD = new SymbolabPad('en');
                 var SYSTEPS = new SymbolabSteps('en', 'false', null, 'https://www.symbolab.com/');
                 var SYSUGGEST_OBJ = new SymbolabEquationSuggest();
@@ -3279,7 +3279,7 @@
         $('.mathquill-editable:not(.mathquill-rendered-math)').mathquill('editable');
         $('.mathquill-textbox:not(.mathquill-rendered-math)').mathquill('textbox');
 
-        var SOLUTIONS = new Solutions("", "step-by-step", htmlDecode("x^{2}-x-6=9"), htmlDecode(''), '0',
+        var SOLUTIONS = new Solutions("", "step-by-step", htmlDecode(""), htmlDecode(''), '0',
             '', 'en',
             'false');
         SOLUTIONS.init();

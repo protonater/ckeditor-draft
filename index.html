@@ -14,7 +14,7 @@
     <script type="module">
         import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.mjs";
     </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/auto/js/main.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft/public/auto/js/main.min.js"></script>
     <!-- <script src="./tinymce/tinymce.min.js"></script> -->
     <!-- <link href="./clone/public/auto/css/solutions.min.css" rel="Stylesheet" type="text/css" /> -->
     <!-- <script src="./clone/public/auto/js/solutions.min.js"></script> -->
@@ -23,7 +23,7 @@
     <script>
         var dialogConfig = {
             title: "Dialog Demo",
-            url: "https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/index.html",
+            url: "public/html/mathEditor.html",
             buttons: [
                 {
                     type: "custom",
@@ -71,7 +71,7 @@
             height: 500,
             advlist_bullet_styles: 'square',
             advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman',
-            content_css: 'https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/auto/css/solution.min.css',
+            content_css: 'https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft/public/auto/css/solution.min.css',
             setup: function (editor) {
                 editor.ui.registry.addButton("iframe", {
                     text: "Math Formula",

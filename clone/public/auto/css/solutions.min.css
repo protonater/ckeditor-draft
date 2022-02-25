@@ -537,7 +537,7 @@ div.button-container-graphing {
 }
 
 #CodepadHead .pad-toolbar-calculator c {
-    background: url('https://www.symbolab.com/public/images/calculator.png') 100% 0 no-repeat;
+    background: url('https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/images/calculator.png') 100% 0 no-repeat;
     width: 20px;
     height: 21px;
     display: inline-block;
@@ -547,7 +547,7 @@ div.button-container-graphing {
 
 #CodepadHead .pad-toolbar-calculator.active c,
 #CodepadHead .pad-toolbar-calculator:hover c {
-    background: url('https://www.symbolab.com/public/images/calculator2.png') 100% 0 no-repeat
+    background: url('https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/images/calculator2.png') 100% 0 no-repeat
 }
 
 .new-pad-button .mathquill-embedded-latex {

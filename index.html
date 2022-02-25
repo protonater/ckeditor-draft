@@ -14,7 +14,7 @@
     <script type="module">
         import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.mjs";
     </script>
-    <script type="text/javascript" src="./clone/public/auto/js/main.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/auto/js/main.min.js"></script>
     <!-- <script src="./tinymce/tinymce.min.js"></script> -->
     <!-- <link href="./clone/public/auto/css/solutions.min.css" rel="Stylesheet" type="text/css" /> -->
     <!-- <script src="./clone/public/auto/js/solutions.min.js"></script> -->
@@ -23,7 +23,7 @@
     <script>
         var dialogConfig = {
             title: "Dialog Demo",
-            url: "./clone/index.html",
+            url: "https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/index.html",
             buttons: [
                 {
                     type: "custom",
@@ -71,7 +71,7 @@
             height: 500,
             advlist_bullet_styles: 'square',
             advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman',
-            content_css: './clone/public/auto/css/solution.min.css',
+            content_css: 'https://cdn.jsdelivr.net/gh/protonater/ckeditor-draft@1.0.0/clone/public/auto/css/solution.min.css',
             setup: function (editor) {
                 editor.ui.registry.addButton("iframe", {
                     text: "Math Formula",
@@ -107,68 +107,6 @@
 <body>
     <div style="display: block;" id="tex"></div>
     <textarea>Next, use our Get Started docs to setup Tiny!</textarea>
-    <script type="text/javascript">
-        if (localStorage.getItem("beforeSubs") == 1) {
-            localStorage.removeItem("beforeSubs");
-            updateUserSettings();
-        }
-
-        $('#widgetPad .mathquill-embedded-latex').mathquill();
-        $('#Examples .solution_box .mathquill-embedded-latex').mathquill();
-        $('.mathquill-editable:not(.mathquill-rendered-math)').mathquill('editable');
-        $('#verify-input').mathquill('placeholder', "Got\\:a\\:different\\:answer?\\:Check\\:if\\:it's\\:correct");
-        $('#most_used_actions .mathquill-embedded-latex').mathquill();
-
-        if (localStorage.getItem('settings.pad') == 'fullPad') {
-            $('.codepad-container').find('.mathquill-embedded-latex:not(.mathquill-rendered-math)').mathquill();
-            $('.codepad-container').show();
-            $('.codepad-container-small').hide();
-            $('.solution-codepad-header span').html('« ' + i18n('compact pad'));
-            $('.pad-toolbar-basic').addClass('active');
-            $('.codepad-container').mathquill('redraw');
-        }
-        else {
-            $('#widgetPad').show();
-        }
-
-        $('#Examples .solution_box').show();
-        $('.codepad-input').show();
-
-        $('#widgetPad').mathquill('redraw');
-        $('#Examples .solution_box').mathquill('redraw');
-
-        $('#most_used_actions').show();
-        $('#most_used_actions').mathquill('redraw');
-
-        $(".loading-animation").hide();
-
-        var SYMBOLAB = new Symbolab("fe", htmlDecode("x^{2}-x-6=9"), 'en');
-        var SYPAD = new SymbolabPad('en');
-        var SYSTEPS = new SymbolabSteps('en', 'false', null, 'https://www.symbolab.com/');
-        var SYSUGGEST_OBJ = new SymbolabEquationSuggest();
-        var SYSUGGEST = null;
-        $("body").on("focus blur", "#verify-input", function () {
-            SYPAD.activeInputBox = $(this);
-            SYSUGGEST = null;
-        });
-        $("body").on("focus blur", "#main-input", function () {
-            SYPAD.activeInputBox = $(this);
-            SYSUGGEST = SYSUGGEST_OBJ;
-        });
-
-
-        $(function () {
-            if (window.location.href.indexOf('/solver') >= 0 && $(".googleAdsense").height() < 100 && "false" != "true") {
-                var href = $(".symp a").attr("data");
-                // symbolab_log('Solutions', 'ShowSymbolabAd', href);
-                $(".symp").show();
-                $(".googleAdsenseMiddle").hide();
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        $('.mathquill-editable:not(.mathquill-rendered-math)').mathquill('editable');
-    </script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
     <!-- <script src="./clone/public/auto/js/solutions.min.js"></script> -->
     <script
         src="https://cdn.tiny.cloud/1/olayhq3egaat8n1xm0zjleclyytx387nwra71on76g6y45qp/tinymce/5/tinymce.min.js"></script>
-        <link href="/public/auto/css/solutions.min.css" rel="Stylesheet" type="text/css" />
+    <!-- <link href="/public/auto/css/solutions.min.css" rel="stylesheet" type="text/css" /> -->
     <script>
         var dialogConfig = {
             title: "Math Formula Editor",
@@ -48,7 +48,6 @@
             height: 430,
             width: 710,
             onAction: function (instance, trigger) {
-                debugger;
                 if (trigger.name === "block-insert") {
                     instance.sendMessage({
                         mceAction: "customBlockInsert"
@@ -72,7 +71,7 @@
             height: 500,
             advlist_bullet_styles: 'square',
             advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman',
-            content_css: '/public/auto/css/solution.min.css',
+            content_css: '/public/auto/css/solutions.min.css',
             setup: function (editor) {
                 editor.ui.registry.addButton("iframe", {
                     text: "Math Formula",
@@ -83,20 +82,22 @@
                 });
 
                 editor.addCommand("iframeCommand", function (ui, value) {
-                    // const el = document.getElementById("tex");
-                    // el.append(value.name);
-                    // katex.render(value.name, el);
                     debugger;
+                    let el = document.getElementById("tex");
+                    el.innerHTML=value.name;
+                    $('.textarea').remove();
+                    $('.cursor').remove()
+                    // katex.render(value.name, el);
                     if (value.type === "block") {
                         editor.insertContent(
-                            `&nbsp;<span id="block-math" class="mathquill-input mathquill-editable" rel="tooltip" title="">${value.name}</span>&nbsp;`
-                        );
+                            `&nbsp;<pre><span id="block-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">${el.innerHTML}</span></pre>&nbsp;`
+                        )
                     } else {
                         editor.insertContent(
-                            `&nbsp;<span id="inline-math" class="mathquill-input mathquill-editable" rel="tooltip" title="">${value.name}</span>&nbsp;`
+                            `&nbsp;<span id="inline-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">${el.innerHTML}</span>&nbsp;`
                         );
                     }
-                    $("#code-input").mathquill();
+                    $("#inline-math").mathquill();
                 });
             }
         };
@@ -106,7 +107,7 @@
 </head>
 
 <body>
-    <div style="display: block;" id="tex"></div>
+    <div style="display: none;" id="tex"></div>
     <textarea>Next, use our Get Started docs to setup Tiny!</textarea>
 </body>
 

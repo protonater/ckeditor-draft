@@ -6,6 +6,7 @@ body {
     text-shadow: none;
     background-color: #f6f4f4;
     margin: 0;
+    width: 600px;
 }
 
 hr {
@@ -1412,8 +1413,9 @@ a {
 .nl-center,
 #nl-mainNav ul,
 #nl-subNav>ul {
-    width: 1200px;
-    margin: 0 auto;
+    width: 693px;
+    max-height: fit-content;
+    margin: 0 4px;
     list-style-type: none;
     padding: 0
 }

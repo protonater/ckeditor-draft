@@ -165,7 +165,7 @@
 #CodepadHead [class^="pad-toolbar-"]:hover,
 #CodepadHead [class*=" pad-toolbar-"]:hover {
     cursor: pointer;
-    background-color: #e02342;
+    background-color: #207ab7;
     color: white
 }
 

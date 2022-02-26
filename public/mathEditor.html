@@ -3168,7 +3168,7 @@
                         window.addEventListener('message', function (event) { 
                           if (event.data.mceAction ==='customInlineInsert'){
                             var value = {
-                                name: $("#main-input").html(),
+                                name: $("#main-input").mathquill("latex"),
                                 type: "inline"
                             };
                         
@@ -3183,7 +3183,7 @@
                               }, origin);
                           } else {
                             var value = {
-                                name: $("#main-input").html(),
+                                name: $("#main-input").mathquill("latex"),
                                 type: "block"
                             };
                         

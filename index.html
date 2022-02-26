@@ -82,19 +82,19 @@
                 });
 
                 editor.addCommand("iframeCommand", function (ui, value) {
-                    debugger;
-                    let el = document.getElementById("tex");
-                    el.innerHTML=value.name;
-                    $('.textarea').remove();
-                    $('.cursor').remove()
+                    // debugger;
+                    // let el = document.getElementById("tex");
+                    // el.innerHTML=value.name;
+                    // $('.textarea').remove();
+                    // $('.cursor').remove()
                     // katex.render(value.name, el);
                     if (value.type === "block") {
                         editor.insertContent(
-                            `&nbsp;<pre><span id="block-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">${el.innerHTML}</span></pre>&nbsp;`
+                            `<pre><code><span id="block-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">\\[${value.name}\\]</span></code></pre>`
                         )
                     } else {
                         editor.insertContent(
-                            `&nbsp;<span id="inline-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">${el.innerHTML}</span>&nbsp;`
+                            `<code><span id="inline-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">\\(${value.name}\\)</span></code>`
                         );
                     }
                     $("#inline-math").mathquill();
@@ -108,7 +108,7 @@
 
 <body>
     <div style="display: none;" id="tex"></div>
-    <textarea>Next, use our Get Started docs to setup Tiny!</textarea>
+    <textarea></textarea>
 </body>
 
 </html>

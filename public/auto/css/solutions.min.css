@@ -2408,14 +2408,14 @@ table.conversion>tbody>tr>td {
 .codepad-input ul.suggestions li.active {
     background-color: #eee
 }
-#inline-math {
+.inline-math {
     font-family: Symbola-mq;
     -webkit-font-smoothing: antialiased;
     font-size: 20px;
     display: inline;
     cursor: text;
 }
-#block-math {
+.block-math {
     font-family: Symbola-mq;
     -webkit-font-smoothing: antialiased;
     font-size: 20px;

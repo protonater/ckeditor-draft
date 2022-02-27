@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/protonater/ckeditor-draft#readme",
   "dependencies": {
-    "express": "^4.17.3",
-    "mathpix-markdown-it": "^1.0.71"
+    "express": "^4.17.3"
   }
 }

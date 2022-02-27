@@ -364,28 +364,6 @@ div.button-container-graphing {
     padding-bottom: 0
 }
 
-#block-formula {
-    display: block;
-    width: 585px;
-    min-height: 165px;
-    -overflow-x: hidden;
-    padding: 8px 40px 8px 12px;
-    font-size: 20px;
-    margin-left: 13px;
-    margin-top: 16px;
-    margin-right: 3px;
-    position: relative;
-    text-align: left;
-    vertical-align: text-top;
-    cursor: text;
-    background-color: #fff;
-    color: #707070;
-    border-color: #ccc;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px
-}
-
 #home .mathquill-input.mathquill-editable {
     width: 515px
 }
@@ -416,9 +394,9 @@ div.button-container-graphing {
     box-shadow: 0 0 3px 1px #707070
 }
 
-/* .mathquill-input.mathquill-rendered-math.empty {
+.mathquill-input.mathquill-rendered-math.empty {
     min-height: 22px
-} */
+}
 
 .mathquill-input.mathquill-editable.hasCursor {
     border-color: #ccc

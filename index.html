@@ -2,25 +2,15 @@
 <html>
 
 <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
-        integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
-        integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
-        integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
-        crossorigin="anonymous"></script>
-    <script type="module">
-        import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.mjs";
-    </script>
-    <script type="text/javascript" src="/public/auto/js/main.min.js"></script>
-    <!-- <script src="./tinymce/tinymce.min.js"></script> -->
-    <!-- <link href="/public/auto/css/solutions.min.css" rel="Stylesheet" type="text/css" /> -->
-    <!-- <script src="./clone/public/auto/js/solutions.min.js"></script> -->
     <script
         src="https://cdn.tiny.cloud/1/olayhq3egaat8n1xm0zjleclyytx387nwra71on76g6y45qp/tinymce/5/tinymce.min.js"></script>
-    <!-- <link href="/public/auto/css/solutions.min.css" rel="stylesheet" type="text/css" /> -->
     <script>
         var dialogConfig = {
             title: "Math Formula Editor",
@@ -45,7 +35,7 @@
                     text: "Cancel"
                 }
             ],
-            height: 430,
+            height: 610,
             width: 710,
             onAction: function (instance, trigger) {
                 if (trigger.name === "block-insert") {
@@ -60,15 +50,15 @@
             }
         };
         let config = {
-            selector: 'textarea',  // change this value according to your HTML
+            selector: '.editor',  
             plugins: ['advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
                 'insertdatetime media table paste code help wordcount'],
-            toolbar: 'undo redo | formatselect | ' +
+            toolbar: 'undo redo | formatselect iframe | ' +
                 'bold italic backcolor | alignleft aligncenter ' +
                 'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | iframe help',
-            height: 500,
+                'removeformat',
+            height: 900,
             advlist_bullet_styles: 'square',
             advlist_number_styles: 'lower-alpha,lower-roman,upper-alpha,upper-roman',
             content_css: '/public/auto/css/solutions.min.css',
@@ -82,33 +72,44 @@
                 });
 
                 editor.addCommand("iframeCommand", function (ui, value) {
-                    // debugger;
-                    // let el = document.getElementById("tex");
-                    // el.innerHTML=value.name;
-                    // $('.textarea').remove();
-                    // $('.cursor').remove()
-                    // katex.render(value.name, el);
                     if (value.type === "block") {
                         editor.insertContent(
-                            `<pre><code><span id="block-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">\\[${value.name}\\]</span></code></pre>`
+                            `<span class="mathquill-latex">\\[\\begin{equation}\\begin{aligned}${localStorage.getItem("quillPad")}\\end{aligned}\\end{equation}\\]</span>`
                         )
                     } else {
                         editor.insertContent(
-                            `<code><span id="inline-math" class="mathquill-embedded-latex mathquill-rendered-math" rel="tooltip" title="">\\(${value.name}\\)</span></code>`
+                            `<span class="mathquill-latex">\\(${value.name}\\)</span>`
                         );
                     }
-                    $("#inline-math").mathquill();
                 });
-            }
+            },
         };
 
         tinymce.init(config);
+        const renderMath = () => {
+            const options = {
+                htmlTags: true
+            }
+            const previewWindow = document.querySelector('#previewer')
+            previewWindow.innerHTML = tinymce.activeEditor.getContent({ format: 'html' });
+            MathJax.typesetPromise([previewWindow], tinymce.activeEditor.getContent({ format: 'html' }))
+        }
     </script>
 </head>
 
 <body>
-    <div style="display: none;" id="tex"></div>
-    <textarea></textarea>
+    <div class="inline-div border" style="width: 50%; float: left;">
+        <p align="center"><strong>Editor Window</strong></p>
+        <textarea cols="30" rows="30" id="editor" class="editor inline-textarea"></textarea>
+    </div>
+    <div class="inline-div" style="width: 50%; float: right;">
+        <p align="center"><strong>Preview Window</strong></p>
+        <div class="d-grid gap-2">
+            <button onclick="renderMath()" class="btn btn-secondary" type="button">Preview</button>
+        </div>
+        <div id="previewer" class="border bg-light" style="height: 862px; width: 100%" disabled class="inline-textarea">
+        </div>
+    </div>
 </body>
 
 </html>
